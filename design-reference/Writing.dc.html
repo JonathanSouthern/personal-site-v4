@@ -1,0 +1,91 @@
+<html><head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-a000d8de-c2d1-476a-867e-7df58d72ea82/styles.css">
+<script src="_ds/nocturne-a000d8de-c2d1-476a-867e-7df58d72ea82/_ds_bundle.js"></script>
+<style>
+html{background:var(--color-bg)}
+body{margin:0;background:radial-gradient(1200px 720px at 75% -160px, color-mix(in srgb, var(--color-accent-900) 75%, transparent), transparent 62%), radial-gradient(1100px 800px at -10% 100%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg);text-wrap:pretty}
+a{color:var(--color-accent);text-decoration:none}a:hover{color:var(--color-accent-300)}
+</style>
+</helmet>
+<nav class="nav" style="padding-inline: max(clamp(20px, 5vw, 72px), calc((100% - 1200px) / 2 + clamp(20px, 5vw, 72px)));">
+  <a class="nav-brand" href="Home.dc.html" style="color: var(--color-text);">JS</a>
+  <a href="Projects.dc.html" style="color: var(--color-text);">Work</a>
+  <a href="Writing.dc.html" style="color: var(--color-accent);">Words</a>
+  <a href="Home.dc.html#about" style="color: var(--color-text);">About</a>
+  <a class="btn btn-primary" href="Home.dc.html#contact" style="margin-left: 8px;">Get in touch</a>
+</nav>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+  <section style="padding: clamp(48px, 7vw, 88px) 0 40px;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 20px;">Words</span>
+    <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.5vw, 64px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 0 -0.06em;">All words<span style="color: var(--color-accent);">.</span></h1>
+    <p style="font-size: 17px; line-height: 28px; max-width: 58ch; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);">Essays, notes, and the occasional field report Ñ on cars, code, and life in between. Pick a lane or read it all.</p>
+  </section>
+  <section style="padding: 0 0 80px;">
+    <div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: 28px;" role="tablist" aria-label="Filter posts by topic">
+      <sc-for list="{{ topics }}" as="topic" hint-placeholder-count="4">
+        <button type="button" onclick="{{ topic.select }}" role="tab" aria-selected="{{ topic.active }}" style="font-family: inherit; font-size: 13px; letter-spacing: 0.02em; padding: 6px 14px; border-radius: 999px; cursor: pointer; background: {{ topic.bg }}; color: {{ topic.ink }}; border: 1px solid {{ topic.border }};" style-hover="border-color: var(--color-accent);">{{ topic.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+      <sc-for list="{{ posts }}" as="post" hint-placeholder-count="6">
+        <a href="#" style="color: inherit;"><div class="card" style="height: 100%; box-sizing: border-box;">
+          <div style="display: flex; justify-content: space-between; gap: 16px; align-items: baseline;">
+            <span class="card-kicker" style="margin: 0;">{{ post.meta }}</span>
+            <span class="tag tag-accent" style="flex: none;">{{ post.topicLabel }}</span>
+          </div>
+          <h3 class="card-title">{{ post.title }}</h3>
+          <p class="card-body">{{ post.teaser }}</p>
+        </div></a>
+      </sc-for>
+    </div>
+  </section>
+  <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
+  <footer style="display: flex; justify-content: space-between; align-items: baseline; padding: 40px 0 48px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 50%, transparent);">
+    <span>© 2026 Jonathan Southern</span>
+    <div style="display: flex; gap: 20px;"><a href="https://github.com" target="_blank" rel="noopener">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { filter: 'all' };
+  posts = [
+    { topic: 'cars', meta: 'Jun 2026 á Essay á 6 min', title: 'What a decade-old manual taught me about maintenance', teaser: 'A car post that is secretly about software Ñ or the other way round. Two sentences that make someone want the rest.' },
+    { topic: 'engineering', meta: 'Apr 2026 á Notes á 4 min', title: 'Notes on something I figured out the hard way', teaser: 'A teaser for the lesson Ñ what went wrong, and the one-line moral.' },
+    { topic: 'personal', meta: 'Feb 2026 á Field note á 3 min', title: 'A shorter post, more of a field note', teaser: 'Small observation, quickly written. These keep the blog alive between essays.' },
+    { topic: 'cars', meta: 'Jan 2026 á Essay á 7 min', title: 'The case for the boring, reliable daily', teaser: 'Placeholder for a warm, opinionated car piece Ñ the kind you argue about with friends.' },
+    { topic: 'personal', meta: 'Dec 2025 á Essay á 8 min', title: 'A year-end reflection with a warm title', teaser: 'What the year taught me Ñ projects, people, and the thing I would tell myself in January.' },
+    { topic: 'engineering', meta: 'Oct 2025 á Notes á 5 min', title: 'A technical deep-dive with a friendly framing', teaser: 'The teaser explains why a non-expert might still enjoy this one.' },
+    { topic: 'cars', meta: 'Sep 2025 á Field note á 2 min', title: 'Something small that delighted me at the track', teaser: 'Short and warm. The kind of post people forward to a friend.' },
+    { topic: 'engineering', meta: 'Aug 2025 á Essay á 6 min', title: 'On building small tools that outlive their repos', teaser: 'Placeholder essay teaser Ñ the thesis in one honest sentence.' },
+  ];
+  labels = { all: 'All', cars: 'Cars', personal: 'Personal', engineering: 'Engineering' };
+  renderVals() {
+    const f = this.state.filter;
+    const topics = ['all', 'cars', 'personal', 'engineering'].map((t) => ({
+      label: this.labels[t] + (t === 'all' ? '' : ' á ' + this.posts.filter((p) => p.topic === t).length),
+      active: f === t,
+      select: () => this.setState({ filter: t }),
+      bg: f === t ? 'var(--color-accent-800)' : 'transparent',
+      ink: f === t ? 'var(--color-accent-100)' : 'var(--color-text)',
+      border: f === t ? 'var(--color-accent-600)' : 'var(--color-neutral-700)',
+    }));
+    const posts = this.posts
+      .filter((p) => f === 'all' || p.topic === f)
+      .map((p) => ({ ...p, topicLabel: this.labels[p.topic] }));
+    return { topics, posts };
+  }
+}
+</script>
+
+
+</body></html>
