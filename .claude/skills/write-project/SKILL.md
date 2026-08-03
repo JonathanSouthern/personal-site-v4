@@ -14,9 +14,9 @@ Interview Jonathan about one project, then assemble **his verbatim answers** int
 
 ## Voice rules (non-negotiable)
 
-Jonathan's interview answers ARE the source text. Assembling means: reorder, trim filler, fix typos and punctuation, add connective tissue of at most a clause. It does not mean rewriting.
+Jonathan's interview answers are the primary source text. Since the Hatch A Pet session he also allows drafted content, under two conditions: the voice matches `docs/voice.md`, and every fact is grounded in something he said or something read from his actual repos. Never invent facts about his life or experience. When a fact is missing, ask.
 
-If a section needs a sentence he didn't say, ask him for it. Never invent one.
+If he's given the material, assemble it: reorder, trim filler, fix typos, keep his phrasing.
 
 Apply the blocklist and style notes in `docs/voice.md`.
 
@@ -45,8 +45,9 @@ Ground to cover (adapt the wording, don't script-read):
 Fixed template. If Jonathan rewords a heading, his wording becomes the new default — update this file and note it in `docs/voice.md`.
 
 ```md
-## Why I built it
-## How it's built
+## Why I built it     (short: who I am, why this project)
+## The loop           (what the product/game actually does — rename per project)
+## How it's built     (Tools list with links, then Architecture bullets)
 ## Where it is now
 ## What I learned
 ```

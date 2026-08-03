@@ -1,0 +1,83 @@
+---
+title: "Hatch A Pet"
+date: 2026-07-01
+kicker: "First game"
+summary: "My first full fledged game, built for my little cousins. Hatch pets from eggs, collect them, and gain income from it. Live on Roblox."
+meta: "Luau · Live on Roblox"
+stack: [Luau, Roblox Studio, Rojo]
+timeline: "4 weekends to first release"
+role: "Everything"
+links:
+  live: "https://www.roblox.com/games/83474950090720/Hatch-A-Pet"
+featured: true
+---
+
+## Why I built it
+
+I'm used to building web apps, so I wanted to really challenge myself and build
+something my little cousins would actually enjoy. I had built games in the past
+within Unreal and Unity, but those were demos. This is my first full fledged game.
+
+I think Roblox is the next phase of mobile gaming. Mobile games have been
+plagued with ads while Roblox offers a wide variety for kids to easily play
+for free.
+
+## The loop
+
+The whole game is a cycle I picked up from other popular Roblox games: hatch
+pets from eggs, collect them, and gain income from it. Players don't always
+want something new, they want the same ideas in different flavors. Look at the
+amount of obby/"parkour" games there are.
+
+You buy eggs from the shop, warm them on incubator stands, and hatch low-poly
+pets across six egg types. Pets generate coins passively, even offline, and can
+be ascended to Golden or Rainbow rarities.
+
+## How it's built
+
+**Tools**
+
+- [Roblox Studio](https://create.roblox.com/studio) - Roblox's native editor, where the game is built and published
+- [Rojo](https://rojo.space) - framework for syncing a local source tree into Studio, so all the game code lives in git
+- [Studio MCP server](https://create.roblox.com/docs/studio/mcp) - Roblox's built-in MCP server that lets AI tools drive Studio. I used it for creating files, even client side changes
+
+**Architecture**
+
+- **Server Side Heavy:**
+  - **Security:** the Roblox client can't be trusted. An exploiter can modify any LocalScript and fire any RemoteEvent with fake arguments, so every hatch, purchase, and coin tick gets validated on the server. Remotes that write to DataStores get per player cooldowns, so a client firing them in a loop can't burn the server's save budget and break other players' saves
+  - **Sync:** the server is the single source of truth, so state stays synced across every player
+  - **Accessibility:** keeps the client thin enough that kids can play on potato phones
+- **Data:**
+  - **Stores:** each system persists through its own [DataStore](https://create.roblox.com/docs/cloud-services/data-stores) backed store module. Pets, currency, incubators, pens, inventory, daily quests, and race stats all have one
+  - **Offline income:** pets keep earning while you're away. Earnings get credited on join, capped at 8 hours, or 24 with a game pass
+- **Structure:** around 150 Luau modules
+  - **Server:** each feature is a Service paired with its Store. IncubatorService warms and hatches the eggs, RaceService runs the pet races, PassiveIncomeTick credits coins while you're away
+  - **Shared:** config and remote definitions both sides read. EggShopData holds the egg tables and hatch odds, PetEconomy holds the income tuning
+  - **Client:** mostly HUDs and effects. HatchCinematic plays the hatch reveal, plus the inventory, quest, and shop HUDs
+
+## Where it is now
+
+Live on Roblox since July 2026. Took me about 4 weekends to get to the first
+released version.
+
+It's not done. I plan to give small updates, with pet racing, companion pets,
+and endgame progression on the list.
+
+## What I learned
+
+- **Details:** there's a lot of intricate details that go into building a game
+  - **Audio:** when I originally wrote my spec docs I didn't think about audio effects and background music until I was already testing
+  - **Icons:** every egg and supply item in the inventory needs its own 2D icon. I ended up building a small pipeline that renders each 3D model into an image instead of making them by hand
+  - **Onboarding:** kids won't read instructions. The game needed a tutorial, prompts, and toasts before any of it made sense without me standing there explaining it
+  - **Mobile:** most players are on phones. Orientation locking and UI scaling are work you never think about until you watch someone play on a small screen
+  - **Tooling:** I built an admin debug panel just to test features without grinding the game myself
+  - **Moderation:** a game for kids needs a way to report problems. Reporting and feedback were built before I felt okay releasing it
+  - **Analytics:** you need to know what players actually do, not what you think they do
+  - **Migrations:** save data changes shape as the game grows. Older pets get backfilled with new fields when they load
+- **Regulation:** there's a lot of regulation when building a game on Roblox
+  - **Age categorization:** I wasn't aware there's a strict age categorization, like needing 5,000 active players at 16+ before a game gets released to a younger audience. That caused difficulties since I originally created the game for kids
+  - **Chat:** anything a player can type has to go through Roblox's text filtering. You don't get to decide what's okay, the platform does
+  - **Content:** there's a whole questionnaire about what your game contains, and the rules around what younger audiences can see are more expansive than I thought
+- **Retention:** it's easy to build something shiny but hard to keep retention
+  - **Hooks:** most of the systems in the game exist purely to bring players back. Daily quests, playtime rewards, welcome back bonuses, a rotating shop
+  - **The grind:** the economy has to be tuned so the next egg always feels close. Too generous and there's nothing to chase, too stingy and kids just leave
