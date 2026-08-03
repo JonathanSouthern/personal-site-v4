@@ -50,3 +50,26 @@ statements or his actual repos). He corrects anything that sounds off.
 
 _Appended after each piece: phrasing he liked, edits he kept making,
 heading renames, anything that should carry into the next piece._
+
+### From the old Wix blog (RX-7 wing post, Apr 2023)
+
+Ported verbatim with typo fixes only. Patterns observed in his original
+writing, treat these as native voice:
+
+- **Exclamation points for genuine enthusiasm**, not hype: "a poor man's
+  RX7!", "The wing is not made for the Miata!" One per thought, lands on the
+  punchline.
+- **Emoji at the end of casual sentences**: "orange peel from the Maaco job 😬".
+  Sparing, self-deprecating, only in informal car/personal posts.
+- **Numbered step lists for hands-on processes**, written imperative:
+  "Line up the front corners...", "Drill on the marked dot." No bold labels
+  on these, unlike technical bullets.
+- **Plain headings that name the phase**: Inspiration, Sanding, Mounting,
+  Painting, Aftermath (A Year Later). Title Case on the old site.
+- **Casual asides that admit cheapness or improvisation**: "I wouldn't feel
+  as bad messing this up", "since that's what I had around".
+- **Nicknames his projects**: called the build the "MX7" look.
+- **Signs off addressing the reader directly**: "Hopefully this blog post
+  helped you the same way it helped me."
+- **Pulls in quotes from real people** (the Carbon Miata owner's reply) as
+  blockquotes, kept verbatim including their emoji.
