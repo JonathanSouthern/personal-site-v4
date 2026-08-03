@@ -3,29 +3,29 @@
 /* ─── "Field manual" design tokens ─────────────────────────────────────────
    Two themes from one palette: Night shift (dark, default) and Field manual
    (light, via [data-theme="light"]). Hues come from old service manuals:
-   oil-green blacks, aged paper stock, and the blue that wiring diagrams
+   warm neutral blacks, aged paper stock, and the blue that wiring diagrams
    were printed in. Ramps run 100 (lightest) → 900 (darkest) in dark mode
    and are mirrored in light mode so chip/border stops keep their contrast
    role without component changes. ─── */
 :root {
   color-scheme: dark;
 
-  --color-bg: #20231f;
-  --color-surface: #2a2e29;
+  --color-bg: #21201e;
+  --color-surface: #2b2a28;
   --color-text: #eae8e0;
   --color-accent: #8fa9de;
   --color-accent-2: #b7c8e8;
   --color-divider: color-mix(in srgb, #eae8e0 16%, transparent);
 
-  --color-neutral-100: #f4f3ec;
-  --color-neutral-200: #e2e0d5;
-  --color-neutral-300: #c9ccc0;
-  --color-neutral-400: #a8ab9e;
-  --color-neutral-500: #85897b;
-  --color-neutral-600: #686c60;
-  --color-neutral-700: #4a4d43;
-  --color-neutral-800: #31352f;
-  --color-neutral-900: #262924;
+  --color-neutral-100: #f4f3ee;
+  --color-neutral-200: #e3e1db;
+  --color-neutral-300: #cbc9c2;
+  --color-neutral-400: #aaa8a0;
+  --color-neutral-500: #878480;
+  --color-neutral-600: #6b6864;
+  --color-neutral-700: #4c4a46;
+  --color-neutral-800: #333230;
+  --color-neutral-900: #262523;
 
   --color-accent-100: #eef2fa;
   --color-accent-200: #dde3f0;
@@ -51,9 +51,9 @@
   --radius-md: 8px;
   --radius-lg: 14px;
 
-  --shadow-sm: 0 0 0 1px #31352f;
-  --shadow-md: 0 0 0 1px #4a4d43, 0 6px 18px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 0 0 1px #85897b, 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-sm: 0 0 0 1px #333230;
+  --shadow-md: 0 0 0 1px #4c4a46, 0 6px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 0 0 1px #878480, 0 16px 40px rgba(0, 0, 0, 0.65);
 
   /* Shared page metrics from the mockups */
   --page-pad: clamp(20px, 5vw, 72px);
@@ -64,20 +64,20 @@
 
   --color-bg: #efeee8;
   --color-surface: #f8f7f2;
-  --color-text: #252722;
+  --color-text: #252420;
   --color-accent: #274f94;
   --color-accent-2: #3c62a8;
-  --color-divider: color-mix(in srgb, #252722 16%, transparent);
+  --color-divider: color-mix(in srgb, #252420 16%, transparent);
 
-  --color-neutral-100: #262924;
-  --color-neutral-200: #31352f;
-  --color-neutral-300: #4a4d43;
-  --color-neutral-400: #686c60;
-  --color-neutral-500: #85897b;
-  --color-neutral-600: #a8ab9e;
-  --color-neutral-700: #c9ccc0;
-  --color-neutral-800: #e2e0d5;
-  --color-neutral-900: #f4f3ec;
+  --color-neutral-100: #262523;
+  --color-neutral-200: #333230;
+  --color-neutral-300: #4c4a46;
+  --color-neutral-400: #6b6864;
+  --color-neutral-500: #878480;
+  --color-neutral-600: #aaa8a0;
+  --color-neutral-700: #cbc9c2;
+  --color-neutral-800: #e3e1db;
+  --color-neutral-900: #f4f3ee;
 
   --color-accent-100: #16294e;
   --color-accent-200: #1d3a70;
@@ -89,9 +89,9 @@
   --color-accent-800: #dde3f0;
   --color-accent-900: #eef2fa;
 
-  --shadow-sm: 0 0 0 1px #dcdacf;
-  --shadow-md: 0 0 0 1px #c9ccc0, 0 6px 18px rgba(38, 41, 36, 0.12);
-  --shadow-lg: 0 0 0 1px #a8ab9e, 0 16px 40px rgba(38, 41, 36, 0.16);
+  --shadow-sm: 0 0 0 1px #dbd9d3;
+  --shadow-md: 0 0 0 1px #cbc9c2, 0 6px 18px rgba(38, 37, 34, 0.12);
+  --shadow-lg: 0 0 0 1px #aaa8a0, 0 16px 40px rgba(38, 37, 34, 0.16);
 }
 
 /* ─── Base ─── */
