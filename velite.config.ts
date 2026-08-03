@@ -1,4 +1,5 @@
 import { defineCollection, defineConfig, s } from 'velite'
+import rehypeSlug from 'rehype-slug'
 
 const posts = defineCollection({
   name: 'Post',
@@ -40,6 +41,7 @@ const projects = defineCollection({
       featured: s.boolean().default(false),
       image: s.string().optional(),
       path: s.path(),
+      toc: s.toc(),
       code: s.mdx(),
     })
     .transform((data) => ({
@@ -52,4 +54,5 @@ const projects = defineCollection({
 export default defineConfig({
   root: 'content',
   collections: { posts, projects },
+  mdx: { rehypePlugins: [rehypeSlug] },
 })

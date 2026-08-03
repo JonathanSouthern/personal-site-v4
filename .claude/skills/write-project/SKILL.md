@@ -68,6 +68,10 @@ Fixed template. If Jonathan rewords a heading, his wording becomes the new defau
 ## What I learned
 ```
 
+A table of contents renders automatically in the page sidebar from the `##`
+headings (Velite `s.toc()` plus rehype-slug). Never write a manual TOC into the
+`.mdx`, and keep heading names short since they double as TOC links.
+
 Show ONE section at a time, assembled from his answers. Wait for approval or rewording before moving on. A paragraph or two per section — well under 1,500 words total.
 
 Formatting (full rules in `docs/voice.md`, these are the load-bearing ones):

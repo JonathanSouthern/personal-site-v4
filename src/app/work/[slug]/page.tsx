@@ -89,6 +89,31 @@ export default async function ProjectPage({ params }: Props) {
           <MDXContent code={project.code} />
         </div>
         <aside className="flex flex-col" style={{ gap: 28 }}>
+          {project.toc.length > 0 && (
+            <div>
+              <span className="kicker" style={{ marginBottom: 12 }}>
+                On this page
+              </span>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                {project.toc.map((entry) => (
+                  <li key={entry.url}>
+                    <a
+                      href={entry.url}
+                      style={{
+                        display: "block",
+                        padding: "4px 0",
+                        fontSize: 14.5,
+                        lineHeight: "24px",
+                        color: "color-mix(in srgb, var(--color-text) 75%, transparent)",
+                      }}
+                    >
+                      {entry.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {project.stack.length > 0 && (
             <div>
               <span className="kicker" style={{ marginBottom: 12 }}>
