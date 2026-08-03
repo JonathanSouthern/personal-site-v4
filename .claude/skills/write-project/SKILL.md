@@ -40,6 +40,22 @@ Ground to cover (adapt the wording, don't script-read):
 - Where is it now? Anyone using it? Next steps, or an epitaph?
 - What did you learn? What would you do differently?
 
+## Research (do this, don't just interview)
+
+- **Mine the repo.** Ask for the project's local path early. Read the source
+  tree for grounded facts: real module names with their use case, systems he
+  forgot to mention, config data worth citing. Facts read from his code are
+  fair game without asking.
+- **Write out reasons.** When he gives shorthand ("there's a plethora of
+  reasons"), research the actual reasons (web search plus his code) and write
+  them out fully. Vague bullets are a draft smell, he will send them back.
+- **Examples over counts.** Module or file counts are fine for one overview
+  line. Below that, name two or three real modules and what they do.
+- **Never mention private repos or their files in the page.** Readers can't
+  see them. Facts mined from the repo go in as plain statements.
+- If the project is live, fetch its public page (store listing, site) for
+  usable copy and links.
+
 ## Draft — section by section
 
 Fixed template. If Jonathan rewords a heading, his wording becomes the new default — update this file and note it in `docs/voice.md`.
@@ -53,6 +69,16 @@ Fixed template. If Jonathan rewords a heading, his wording becomes the new defau
 ```
 
 Show ONE section at a time, assembled from his answers. Wait for approval or rewording before moving on. A paragraph or two per section — well under 1,500 words total.
+
+Formatting (full rules in `docs/voice.md`, these are the load-bearing ones):
+
+- Prose paragraphs only for the story sections. Everything technical is
+  bullets, because people scan these pages.
+- Every bullet leads with a one or two word bold label and a colon
+  (**Security:**, **Sync:**). A label with multiple points gets sub-bullets,
+  each with its own label.
+- Tool lists: `[Tool](link) - short high level description`. Dashes are fine
+  as list separators, banned inside prose sentences. Semicolons always banned.
 
 Push for captioned images: the hero `image` plus optional inline screenshots. If someone reads only captions, they should still get the project. No fabricated metrics — "where it is now" reflection is enough.
 
