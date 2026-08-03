@@ -48,8 +48,7 @@ export default function HomePage() {
                 color: textAt(85),
               }}
             >
-              Software engineer who likes making useful things and writing honestly about the
-              process.
+              Software engineer writing about code and cars.
             </p>
             <div className="flex gap-5" style={{ fontSize: 14 }}>
               <a href={site.github} target="_blank" rel="noopener">
@@ -176,8 +175,8 @@ export default function HomePage() {
               Get in touch
             </span>
             <p style={{ fontSize: 15.5, lineHeight: "28px", margin: 0, color: textAt(78) }}>
-              Questions, corrections, car recommendations — all welcome. Use the form or email me
-              at <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+              Questions, corrections, car recommendations — all welcome. The form goes straight
+              to my inbox.
             </p>
           </div>
           <ContactForm />

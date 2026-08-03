@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -81,8 +80,7 @@ export function ContactForm() {
         </button>
         {status === "error" && (
           <p className="m-0" style={{ fontSize: 13, color: "var(--color-accent-300)" }}>
-            {error} You can also email me directly at{" "}
-            <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+            {error} Please try again in a bit.
           </p>
         )}
       </div>

@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { site } from "@/lib/site";
 
 type ContactPayload = {
   name?: unknown;
@@ -37,7 +36,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? site.contactEmail;
+  const to = process.env.CONTACT_TO_EMAIL ?? "upforcegravity@gmail.com";
   if (!apiKey) {
     return NextResponse.json(
       { error: "The contact form isn't configured yet." },
