@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXContent } from "@/components/mdx-content";
 import { SiteFooter } from "@/components/site-footer";
 import { allPosts, postMeta } from "@/lib/content";
-import { tagLabels } from "@/lib/site";
+import { site, tagLabels } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,17 +16,53 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = allPosts().find((p) => p.slug === slug);
   if (!post) return {};
-  return { title: post.title, description: post.summary };
+  return {
+    title: post.title,
+    description: post.summary,
+    alternates: { canonical: `/words/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.summary,
+      url: `/words/${post.slug}`,
+      publishedTime: post.date,
+      tags: post.tags.map((tag) => tagLabels[tag]),
+    },
+    twitter: {
+      card: "summary",
+      title: post.title,
+      description: post.summary,
+    },
+  };
 }
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const post = allPosts().find((p) => p.slug === slug);
-  if (!post) notFound();
+  const posts = allPosts();
+  const index = posts.findIndex((p) => p.slug === slug);
+  if (index === -1) notFound();
+  const post = posts[index];
+  // Posts are sorted newest-first, so the previous post is the next index.
+  const older = posts[index + 1];
+  const newer = posts[index - 1];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.date,
+    url: `${site.url}/words/${post.slug}`,
+    author: { "@type": "Person", name: site.name, url: site.url },
+  };
 
   return (
     <main className="container-site">
       <article style={{ maxWidth: 720, paddingBottom: 72 }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <header style={{ padding: "clamp(48px, 7vw, 88px) 0 40px" }}>
           <p style={{ margin: "0 0 24px" }}>
             <Link href="/words" style={{ fontSize: 14 }}>
@@ -57,6 +93,33 @@ export default async function PostPage({ params }: Props) {
         <div className="prose-site">
           <MDXContent code={post.code} />
         </div>
+        {(older || newer) && (
+          <nav
+            aria-label="More posts"
+            className="flex flex-wrap justify-between"
+            style={{
+              gap: 16,
+              marginTop: 56,
+              paddingTop: 24,
+              borderTop: "1px solid var(--color-divider)",
+            }}
+          >
+            <div>
+              {older && (
+                <Link href={`/words/${older.slug}`} style={{ fontSize: 14 }}>
+                  ← {older.title}
+                </Link>
+              )}
+            </div>
+            <div style={{ textAlign: "right" }}>
+              {newer && (
+                <Link href={`/words/${newer.slug}`} style={{ fontSize: 14 }}>
+                  {newer.title} →
+                </Link>
+              )}
+            </div>
+          </nav>
+        )}
       </article>
       <SiteFooter />
     </main>
