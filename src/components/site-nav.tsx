@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { site } from "@/lib/site";
 
 const links = [
@@ -31,6 +32,7 @@ export function SiteNav() {
       <Link href="/#about" style={{ color: "var(--color-text)" }}>
         About
       </Link>
+      <ThemeToggle />
       <Link href="/#contact" className="btn btn-primary" style={{ marginLeft: 8 }}>
         Get in touch
       </Link>

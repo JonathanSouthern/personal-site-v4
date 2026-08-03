@@ -64,17 +64,11 @@ export default function HomePage() {
       </div>
 
       {featured && (
-        <section
-          style={{
-            background:
-              "radial-gradient(900px 420px at 85% -40%, color-mix(in srgb, var(--color-section-glow) 70%, transparent), transparent 64%), var(--color-section)",
-            padding: "64px 0",
-          }}
-        >
+        <section className="section-band" style={{ padding: "64px 0" }}>
           <div className="container-site">
             <span
               className="kicker"
-              style={{ color: "var(--color-accent-200)", marginBottom: 24 }}
+              style={{ color: "var(--color-on-section)", marginBottom: 24 }}
             >
               Featured project
             </span>

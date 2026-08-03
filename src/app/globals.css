@@ -1,37 +1,47 @@
 @import "tailwindcss";
 
-/* ─── Nocturne design-system tokens (from design-reference/nocturne/styles.css) ─── */
+/* ─── "Field manual" design tokens ─────────────────────────────────────────
+   Two themes from one palette: Night shift (dark, default) and Field manual
+   (light, via [data-theme="light"]). Hues come from old service manuals:
+   oil-green blacks, aged paper stock, and the blue that wiring diagrams
+   were printed in. Ramps run 100 (lightest) → 900 (darkest) in dark mode
+   and are mirrored in light mode so chip/border stops keep their contrast
+   role without component changes. ─── */
 :root {
-  --color-bg: #161826;
-  --color-surface: #232532;
-  --color-text: #e9e9ed;
-  --color-accent: #9184d9;
-  --color-accent-2: #a7a1db;
-  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+  color-scheme: dark;
 
-  --color-neutral-100: #f3f5fe;
-  --color-neutral-200: #e4e7f5;
-  --color-neutral-300: #cfd3e5;
-  --color-neutral-400: #b2b6ca;
-  --color-neutral-500: #9397ab;
-  --color-neutral-600: #75798c;
-  --color-neutral-700: #595d6c;
-  --color-neutral-800: #3f424d;
-  --color-neutral-900: #292b31;
+  --color-bg: #20231f;
+  --color-surface: #2a2e29;
+  --color-text: #eae8e0;
+  --color-accent: #8fa9de;
+  --color-accent-2: #b7c8e8;
+  --color-divider: color-mix(in srgb, #eae8e0 16%, transparent);
 
-  --color-accent-100: #f5f4ff;
-  --color-accent-200: #e7e5fe;
-  --color-accent-300: #d2cefd;
-  --color-accent-400: #b5abfc;
-  --color-accent-500: #968ae0;
-  --color-accent-600: #796cbf;
-  --color-accent-700: #5d5294;
-  --color-accent-800: #423a6a;
-  --color-accent-900: #2b2741;
+  --color-neutral-100: #f4f3ec;
+  --color-neutral-200: #e2e0d5;
+  --color-neutral-300: #c9ccc0;
+  --color-neutral-400: #a8ab9e;
+  --color-neutral-500: #85897b;
+  --color-neutral-600: #686c60;
+  --color-neutral-700: #4a4d43;
+  --color-neutral-800: #31352f;
+  --color-neutral-900: #262924;
 
-  --color-section: #262a60;
-  --color-section-glow: #353b80;
-  --color-section-ghost: #4c5397;
+  --color-accent-100: #eef2fa;
+  --color-accent-200: #dde3f0;
+  --color-accent-300: #b7c8e8;
+  --color-accent-400: #8fa9de;
+  --color-accent-500: #5f7fc0;
+  --color-accent-600: #3c62a8;
+  --color-accent-700: #274f94;
+  --color-accent-800: #1d3a70;
+  --color-accent-900: #16294e;
+
+  /* Featured band stays a deep "blueprint" panel in both themes */
+  --color-section: #1c3059;
+  --color-section-glow: #2c4a85;
+  --color-section-ghost: #4a659e;
+  --color-on-section: #dde3f0;
 
   --font-heading: var(--font-inter), system-ui, sans-serif;
   --font-heading-weight: 500;
@@ -41,12 +51,47 @@
   --radius-md: 8px;
   --radius-lg: 14px;
 
-  --shadow-sm: 0 0 0 1px #3f424d;
-  --shadow-md: 0 0 0 1px #595d6c, 0 6px 18px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-sm: 0 0 0 1px #31352f;
+  --shadow-md: 0 0 0 1px #4a4d43, 0 6px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 0 0 1px #85897b, 0 16px 40px rgba(0, 0, 0, 0.65);
 
   /* Shared page metrics from the mockups */
   --page-pad: clamp(20px, 5vw, 72px);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #efeee8;
+  --color-surface: #f8f7f2;
+  --color-text: #252722;
+  --color-accent: #274f94;
+  --color-accent-2: #3c62a8;
+  --color-divider: color-mix(in srgb, #252722 16%, transparent);
+
+  --color-neutral-100: #262924;
+  --color-neutral-200: #31352f;
+  --color-neutral-300: #4a4d43;
+  --color-neutral-400: #686c60;
+  --color-neutral-500: #85897b;
+  --color-neutral-600: #a8ab9e;
+  --color-neutral-700: #c9ccc0;
+  --color-neutral-800: #e2e0d5;
+  --color-neutral-900: #f4f3ec;
+
+  --color-accent-100: #16294e;
+  --color-accent-200: #1d3a70;
+  --color-accent-300: #274f94;
+  --color-accent-400: #3c62a8;
+  --color-accent-500: #5f7fc0;
+  --color-accent-600: #8fa9de;
+  --color-accent-700: #b7c8e8;
+  --color-accent-800: #dde3f0;
+  --color-accent-900: #eef2fa;
+
+  --shadow-sm: 0 0 0 1px #dcdacf;
+  --shadow-md: 0 0 0 1px #c9ccc0, 0 6px 18px rgba(38, 41, 36, 0.12);
+  --shadow-lg: 0 0 0 1px #a8ab9e, 0 16px 40px rgba(38, 41, 36, 0.16);
 }
 
 /* ─── Base ─── */
@@ -58,7 +103,7 @@ body {
   background:
     radial-gradient(
       1200px 720px at 75% -160px,
-      color-mix(in srgb, var(--color-accent-900) 80%, transparent),
+      color-mix(in srgb, #16294e 80%, transparent),
       transparent 62%
     ),
     radial-gradient(
@@ -72,6 +117,15 @@ body {
   font-size: 15px;
   line-height: 1.55;
   text-wrap: pretty;
+}
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(
+      1200px 720px at 75% -160px,
+      color-mix(in srgb, #dde3f0 55%, transparent),
+      transparent 62%
+    ),
+    var(--color-bg);
 }
 h1,
 h2,
@@ -146,6 +200,34 @@ a:hover {
 }
 .btn-ghost:hover {
   background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+
+/* Theme toggle — icon reflects the mode you'd switch to */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+.theme-toggle:hover {
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: var(--color-accent);
+}
+.theme-toggle .icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+:root[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
 }
 
 .field > label {
@@ -232,6 +314,21 @@ textarea.input {
 }
 
 /* ─── Site-level patterns from the mockups ─── */
+/* Featured band: a fixed dark "blueprint" panel in both themes, so it re-pins
+   the text/accent variables that light mode would otherwise turn dark. */
+.section-band {
+  --color-text: #eae8e0;
+  --color-accent: #8fa9de;
+  background:
+    radial-gradient(
+      900px 420px at 85% -40%,
+      color-mix(in srgb, var(--color-section-glow) 70%, transparent),
+      transparent 64%
+    ),
+    var(--color-section);
+  color: var(--color-text);
+}
+
 .container-site {
   max-width: 1200px;
   margin: 0 auto;
